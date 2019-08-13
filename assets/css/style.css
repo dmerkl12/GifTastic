@@ -1,0 +1,17 @@
+#foodChoice{
+    /* background-color: blueviolet; */
+    margin-left: 75%;
+
+}
+.food{
+    margin-right: .5rem;
+    margin-top: .5rem;
+    background-color: blanchedalmond;
+    border: none;
+    border-radius: 4px;
+
+}
+.food:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}
