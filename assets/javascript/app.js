@@ -1,4 +1,4 @@
-let topics = ["Pizza", "Cake", "Hamburger", "Pho", "Chocolate"];
+let topics = ["Pizza", "Cake", "Hamburger", "Pho", "Chocolate", "S'mores", "Burrito", "Hot Dog", "Peanut Butter"];
 
 const numberOfGIFs = 10;
 
@@ -35,6 +35,8 @@ const numberOfGIFs = 10;
             for (let i = 0; i < results.length; i++){
   
               const foodDiv = document.createElement("div");
+
+              const foodURL = results[i].images.fixed_height_still.url;
   
               const rating = results[i].rating;
   
@@ -42,10 +44,29 @@ const numberOfGIFs = 10;
             p.innerHTML = "Rating: " + rating;
   
             const foodImage = document.createElement("img");
-            foodImage.setAttribute("src", results[i].images.fixed_height.url);
-  
-            foodDiv.append(p);
+            
+            foodImage.setAttribute("src", foodURL);
+            foodImage.setAttribute("data-animate-url", results[i].images.fixed_height.url);
+            foodImage.setAttribute("data-still-url", results[i].images.fixed_height_still.url);
+            foodImage.setAttribute("data-state", "still");
+
+            foodImage.addEventListener("click", function(){
+
+              if(foodImage.getAttribute("data-state") === "still"){
+                let animateGIF = foodImage.getAttribute("data-animate-url");
+                foodImage.setAttribute("src", animateGIF);
+                foodImage.setAttribute("data-state", "animate");
+              }
+              else{
+                let stillGIF = foodImage.getAttribute("data-still-url")
+                foodImage.setAttribute("src", stillGIF);
+                foodImage.setAttribute("data-state", "still")
+              }
+            } )
+
+
             foodDiv.append(foodImage);
+            foodDiv.prepend(p);
   
             document.getElementById("gifArea").prepend(foodDiv);
   
@@ -64,29 +85,3 @@ const numberOfGIFs = 10;
     console.log(topics)
 
   });
-
-
-
-  
-
-
-// document.querySelectorAll(".gif").forEach(function (img) {
-//     img.addEventListener("click", function () {
-
-//       const state = this.getAttribute("data-state")
-
-//       console.log(state)
-
-//       if (state === 'still'){
-//         this.setAttribute("src", this.getAttribute("data-animate"));
-//         this.setAttribute("data-state", "animate");
-//       }
-//       else{
-//         this.setAttribute("src", this.getAttribute("data-animate"));
-//         this.setAttribute("data-state", "still")
-//       }
-//     });
-//   });
-
-
-
