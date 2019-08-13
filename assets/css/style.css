@@ -1,3 +1,8 @@
+body{
+    background: url("../images/background.jpg");
+    background-size: 100%;
+}
+
 #foodChoice{
     /* background-color: blueviolet; */
     margin-left: 75%;
@@ -14,4 +19,11 @@
 .food:hover{
     cursor: pointer;
     transform: scale(1.1);
+}
+#add-food{
+    cursor: pointer;
+    transform: scale(1.1);
+    background-color: blanchedalmond;
+    border: none;
+    border-radius: 4px;
 }
